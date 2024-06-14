@@ -1,15 +1,20 @@
+import 'react-native-gesture-handler';
+
 import React, { FC } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { HomeScreen } from '@/presentation/screens/home/HomeScreen';
+import { Navigation } from '@/presentation/navigation/Navigation';
 
 interface Props {}
 
 export const App: FC<Props> = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <HomeScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+        <Navigation />
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 
