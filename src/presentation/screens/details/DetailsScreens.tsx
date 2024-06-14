@@ -1,20 +1,36 @@
 import React, { FC } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
+import { type StackScreenProps } from '@react-navigation/stack';
 
-interface Props {}
+import { useMovie } from '@/presentation/hooks/useMovie';
+import { MovieHeader } from '@/presentation/components/movie/MovieHeader';
+import { FullScreenLoader } from '@/presentation/components/loaders/FullScreenLoader';
+import { MovieDetails } from '@/presentation/components/movie/MovieDetails';
 
-export const DetailsScreens: FC<Props> = () => {
+import type { RootStackParams } from '@/presentation/navigation/Navigation';
+
+interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
+
+export const DetailsScreens: FC<Props> = ({ route }) => {
+  const { movieId } = route.params;
+  const { cast = [], movie, isLoading } = useMovie(movieId);
+
+  if (isLoading) return <FullScreenLoader />;
   return (
-    <View style={styles.container}>
-      <Text>DetailsScreens</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <MovieHeader
+        originalTitle={movie!.originalTitle}
+        poster={movie!.poster}
+        title={movie!.title}
+      />
+      <MovieDetails movie={movie!} cast={cast} />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginBottom: 20,
   },
 });
