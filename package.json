@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "start:ios": "npm run ios -- --simulator=\"iPhone SE (3rd generation)\"",
+    "start:ios": "yarn ios -- --simulator=\"iPhone SE (3rd generation)\"",
     "test": "jest"
   },
   "dependencies": {
