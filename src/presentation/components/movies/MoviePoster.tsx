@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   imageContiner: {
     flex: 1,
     borderRadius: 18,
+    backgroundColor: '#e1e1e1',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

@@ -10,7 +10,7 @@ interface Props {}
 
 export const HomeScreen: FC<Props> = () => {
   const { top } = useSafeAreaInsets();
-  const { isLoading, nowPlaying, populars, topRated, upcoming } = useMovies();
+  const { isLoading, nowPlaying, populars, topRated, upcoming, popularNextPage } = useMovies();
 
   if (isLoading) {
     return (
@@ -26,7 +26,7 @@ export const HomeScreen: FC<Props> = () => {
         <HorizontalCarousel
           movies={populars}
           title="Populares"
-          loadNextPage={() => console.log('Cargando mas...')}
+          loadNextPage={() => popularNextPage()}
         />
         <HorizontalCarousel movies={topRated} title="Mejor Calificadas" />
         <HorizontalCarousel movies={upcoming} title="Proximamente" />
